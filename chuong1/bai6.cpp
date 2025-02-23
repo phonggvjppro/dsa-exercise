@@ -8,21 +8,11 @@ int main() {
     while(t--) {
         string s;
         cin >> s;
-        int i = 1, mode = -1;
-        bool ret = true;
-        while(i < s.length()) {
-            if(s[i] != s[i-1]) {
-                if(mode == -1) {
-                    mode = s[i] > s[i-1];
-                } else {
-                    if(s[i] > s[i-1] != mode) {
-                        ret = false;
-                        break;
-                    }
-                }
-            }
-            i++;
+        bool inc = true, dec = true;
+        for(int i = 1; i<s.length();i++) {
+            if(s[i] > s[i-1]) dec = false;
+            else if(s[i] < s[i-1]) inc = false;
         }
-        cout << (ret ? "YES\n" : "NO\n");
+        cout << (inc || dec ? "YES\n" : "NO\n");
     }
 }
